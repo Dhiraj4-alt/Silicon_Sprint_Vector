@@ -1,0 +1,339 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.59+117 (git sha1 faa1e8fac, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+
+-- Running command `read_verilog rr_arbiter.v; hierarchy -top rr_arbiter; proc; opt; check; stat' --
+
+1. Executing Verilog-2005 frontend: rr_arbiter.v
+Parsing Verilog input from `rr_arbiter.v' to AST representation.
+verilog frontend filename rr_arbiter.v
+Generating RTLIL representation for module `\rr_arbiter'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \rr_arbiter
+
+2.2. Analyzing design hierarchy..
+Top module:  \rr_arbiter
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rr_arbiter.v:121$2 in module rr_arbiter.
+Removed 1 dead cases from process $proc$rr_arbiter.v:15$1 in module rr_arbiter.
+Marked 17 switch rules as full_case in process $proc$rr_arbiter.v:15$1 in module rr_arbiter.
+Removed a total of 1 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 3 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\rr_arbiter.$proc$rr_arbiter.v:121$2'.
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~17 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\rr_arbiter.$proc$rr_arbiter.v:121$2'.
+     1/1: $0\rr_ptr[1:0]
+Creating decoders for process `\rr_arbiter.$proc$rr_arbiter.v:15$1'.
+     1/51: $17\rr_ptr_next[1:0]
+     2/51: $17\grant_valid_next[0:0]
+     3/51: $17\grant_next[3:0]
+     4/51: $16\rr_ptr_next[1:0]
+     5/51: $16\grant_valid_next[0:0]
+     6/51: $16\grant_next[3:0]
+     7/51: $15\rr_ptr_next[1:0]
+     8/51: $15\grant_valid_next[0:0]
+     9/51: $15\grant_next[3:0]
+    10/51: $14\rr_ptr_next[1:0]
+    11/51: $14\grant_valid_next[0:0]
+    12/51: $14\grant_next[3:0]
+    13/51: $13\rr_ptr_next[1:0]
+    14/51: $13\grant_valid_next[0:0]
+    15/51: $13\grant_next[3:0]
+    16/51: $12\rr_ptr_next[1:0]
+    17/51: $12\grant_valid_next[0:0]
+    18/51: $12\grant_next[3:0]
+    19/51: $11\rr_ptr_next[1:0]
+    20/51: $11\grant_valid_next[0:0]
+    21/51: $11\grant_next[3:0]
+    22/51: $10\rr_ptr_next[1:0]
+    23/51: $10\grant_valid_next[0:0]
+    24/51: $10\grant_next[3:0]
+    25/51: $9\rr_ptr_next[1:0]
+    26/51: $9\grant_valid_next[0:0]
+    27/51: $9\grant_next[3:0]
+    28/51: $8\rr_ptr_next[1:0]
+    29/51: $8\grant_valid_next[0:0]
+    30/51: $8\grant_next[3:0]
+    31/51: $7\rr_ptr_next[1:0]
+    32/51: $7\grant_valid_next[0:0]
+    33/51: $7\grant_next[3:0]
+    34/51: $6\rr_ptr_next[1:0]
+    35/51: $6\grant_valid_next[0:0]
+    36/51: $6\grant_next[3:0]
+    37/51: $5\rr_ptr_next[1:0]
+    38/51: $5\grant_valid_next[0:0]
+    39/51: $5\grant_next[3:0]
+    40/51: $4\rr_ptr_next[1:0]
+    41/51: $4\grant_valid_next[0:0]
+    42/51: $4\grant_next[3:0]
+    43/51: $3\rr_ptr_next[1:0]
+    44/51: $3\grant_valid_next[0:0]
+    45/51: $3\grant_next[3:0]
+    46/51: $2\rr_ptr_next[1:0]
+    47/51: $2\grant_valid_next[0:0]
+    48/51: $2\grant_next[3:0]
+    49/51: $1\grant_valid_next[0:0]
+    50/51: $1\grant_next[3:0]
+    51/51: $1\rr_ptr_next[1:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\rr_arbiter.\rr_ptr_next' from process `\rr_arbiter.$proc$rr_arbiter.v:15$1'.
+No latch inferred for signal `\rr_arbiter.\grant_next' from process `\rr_arbiter.$proc$rr_arbiter.v:15$1'.
+No latch inferred for signal `\rr_arbiter.\grant_valid_next' from process `\rr_arbiter.$proc$rr_arbiter.v:15$1'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\rr_arbiter.\rr_ptr' using process `\rr_arbiter.$proc$rr_arbiter.v:121$2'.
+  created $adff cell `$procdff$551' with positive edge clock and positive level reset.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `rr_arbiter.$proc$rr_arbiter.v:121$2'.
+Found and cleaned up 17 empty switches in `\rr_arbiter.$proc$rr_arbiter.v:15$1'.
+Removing empty process `rr_arbiter.$proc$rr_arbiter.v:15$1'.
+Cleaned up 17 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_arbiter.
+<suppressed ~17 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_arbiter.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_arbiter'.
+<suppressed ~168 debug messages>
+Removed a total of 56 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$426.
+    dead port 1/2 on $mux $procmux$423.
+    dead port 2/2 on $mux $procmux$414.
+    dead port 1/2 on $mux $procmux$412.
+    dead port 1/2 on $mux $procmux$409.
+    dead port 1/2 on $mux $procmux$406.
+    dead port 2/2 on $mux $procmux$397.
+    dead port 1/2 on $mux $procmux$395.
+    dead port 1/2 on $mux $procmux$392.
+    dead port 1/2 on $mux $procmux$389.
+    dead port 2/2 on $mux $procmux$380.
+    dead port 2/2 on $mux $procmux$522.
+    dead port 2/2 on $mux $procmux$373.
+    dead port 2/2 on $mux $procmux$366.
+    dead port 2/2 on $mux $procmux$359.
+    dead port 2/2 on $mux $procmux$514.
+    dead port 1/2 on $mux $procmux$357.
+    dead port 2/2 on $mux $procmux$349.
+    dead port 1/2 on $mux $procmux$347.
+    dead port 2/2 on $mux $procmux$339.
+    dead port 1/2 on $mux $procmux$337.
+    dead port 2/2 on $mux $procmux$329.
+    dead port 2/2 on $mux $procmux$506.
+    dead port 1/2 on $mux $procmux$327.
+    dead port 1/2 on $mux $procmux$324.
+    dead port 2/2 on $mux $procmux$316.
+    dead port 1/2 on $mux $procmux$314.
+    dead port 1/2 on $mux $procmux$311.
+    dead port 2/2 on $mux $procmux$303.
+    dead port 1/2 on $mux $procmux$504.
+    dead port 1/2 on $mux $procmux$301.
+    dead port 1/2 on $mux $procmux$298.
+    dead port 2/2 on $mux $procmux$290.
+    dead port 1/2 on $mux $procmux$288.
+    dead port 1/2 on $mux $procmux$285.
+    dead port 1/2 on $mux $procmux$282.
+    dead port 2/2 on $mux $procmux$274.
+    dead port 2/2 on $mux $procmux$495.
+    dead port 1/2 on $mux $procmux$272.
+    dead port 1/2 on $mux $procmux$269.
+    dead port 1/2 on $mux $procmux$266.
+    dead port 2/2 on $mux $procmux$258.
+    dead port 1/2 on $mux $procmux$256.
+    dead port 1/2 on $mux $procmux$253.
+    dead port 1/2 on $mux $procmux$250.
+    dead port 2/2 on $mux $procmux$242.
+    dead port 1/2 on $mux $procmux$493.
+    dead port 2/2 on $mux $procmux$236.
+    dead port 2/2 on $mux $procmux$230.
+    dead port 2/2 on $mux $procmux$484.
+    dead port 2/2 on $mux $procmux$224.
+    dead port 1/2 on $mux $procmux$222.
+    dead port 2/2 on $mux $procmux$215.
+    dead port 1/2 on $mux $procmux$482.
+    dead port 1/2 on $mux $procmux$213.
+    dead port 2/2 on $mux $procmux$206.
+    dead port 1/2 on $mux $procmux$204.
+    dead port 2/2 on $mux $procmux$197.
+    dead port 2/2 on $mux $procmux$473.
+    dead port 1/2 on $mux $procmux$195.
+    dead port 1/2 on $mux $procmux$192.
+    dead port 2/2 on $mux $procmux$185.
+    dead port 1/2 on $mux $procmux$183.
+    dead port 1/2 on $mux $procmux$180.
+    dead port 2/2 on $mux $procmux$173.
+    dead port 1/2 on $mux $procmux$471.
+    dead port 1/2 on $mux $procmux$171.
+    dead port 1/2 on $mux $procmux$168.
+    dead port 2/2 on $mux $procmux$161.
+    dead port 1/2 on $mux $procmux$468.
+    dead port 1/2 on $mux $procmux$159.
+    dead port 1/2 on $mux $procmux$156.
+    dead port 1/2 on $mux $procmux$153.
+    dead port 2/2 on $mux $procmux$146.
+    dead port 1/2 on $mux $procmux$144.
+    dead port 1/2 on $mux $procmux$141.
+    dead port 1/2 on $mux $procmux$138.
+    dead port 2/2 on $mux $procmux$131.
+    dead port 2/2 on $mux $procmux$459.
+    dead port 1/2 on $mux $procmux$129.
+    dead port 1/2 on $mux $procmux$126.
+    dead port 1/2 on $mux $procmux$123.
+    dead port 2/2 on $mux $procmux$116.
+    dead port 2/2 on $mux $procmux$111.
+    dead port 1/2 on $mux $procmux$457.
+    dead port 2/2 on $mux $procmux$106.
+    dead port 1/2 on $mux $procmux$454.
+    dead port 2/2 on $mux $procmux$101.
+    dead port 1/2 on $mux $procmux$99.
+    dead port 2/2 on $mux $procmux$93.
+    dead port 2/2 on $mux $procmux$445.
+    dead port 1/2 on $mux $procmux$91.
+    dead port 2/2 on $mux $procmux$85.
+    dead port 1/2 on $mux $procmux$83.
+    dead port 2/2 on $mux $procmux$77.
+    dead port 1/2 on $mux $procmux$443.
+    dead port 1/2 on $mux $procmux$75.
+    dead port 1/2 on $mux $procmux$72.
+    dead port 2/2 on $mux $procmux$66.
+    dead port 1/2 on $mux $procmux$440.
+    dead port 1/2 on $mux $procmux$64.
+    dead port 1/2 on $mux $procmux$61.
+    dead port 2/2 on $mux $procmux$55.
+    dead port 1/2 on $mux $procmux$53.
+    dead port 1/2 on $mux $procmux$50.
+    dead port 2/2 on $mux $procmux$44.
+    dead port 2/2 on $mux $procmux$431.
+    dead port 1/2 on $mux $procmux$42.
+    dead port 1/2 on $mux $procmux$39.
+    dead port 1/2 on $mux $procmux$36.
+    dead port 2/2 on $mux $procmux$30.
+    dead port 2/2 on $mux $procmux$530.
+    dead port 1/2 on $mux $procmux$28.
+    dead port 1/2 on $mux $procmux$25.
+    dead port 1/2 on $mux $procmux$22.
+    dead port 2/2 on $mux $procmux$16.
+    dead port 1/2 on $mux $procmux$429.
+    dead port 1/2 on $mux $procmux$14.
+    dead port 1/2 on $mux $procmux$11.
+    dead port 1/2 on $mux $procmux$8.
+Removed 120 multiplexer ports.
+<suppressed ~174 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_arbiter.
+Performed a total of 0 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_arbiter'.
+Removed a total of 0 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$551 ($adff) from module rr_arbiter (D = $procmux$542_Y, Q = \rr_ptr).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_arbiter..
+Removed 2 unused cells and 357 unused wires.
+<suppressed ~3 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_arbiter.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_arbiter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~54 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_arbiter.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_arbiter'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_arbiter..
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_arbiter.
+
+4.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5. Executing CHECK pass (checking for obvious problems).
+Checking module rr_arbiter...
+Found and reported 0 problems.
+
+6. Printing statistics.
+
+=== rr_arbiter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       66 wires
+      141 wire bits
+        9 public wires
+       20 public wire bits
+        5 ports
+       11 port bits
+       61 cells
+        1   $adffe
+        3   $eq
+        1   $logic_not
+       48   $mux
+        4   $ne
+        3   $pmux
+        1   $reduce_and
+
+End of script. Logfile hash: 3d65852993, CPU: user 0.02s system 0.01s, MEM: 18.24 MB peak
+Yosys 0.59+117 (git sha1 faa1e8fac, g++ 13.3.0-6ubuntu2~24.04 -fPIC -O3)
+Time spent: 26% 2x read_verilog (0 sec), 25% 4x opt_expr (0 sec), ...
