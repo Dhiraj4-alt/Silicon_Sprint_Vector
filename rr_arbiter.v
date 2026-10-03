@@ -11,40 +11,111 @@ module rr_arbiter (
 
     reg [3:0] grant_next;
     reg       grant_valid_next;
-    reg       found;
-
-    integer offset;
-    integer index;
 
     always @* begin
+
         grant_next       = 4'b0000;
         grant_valid_next = 1'b0;
         rr_ptr_next      = rr_ptr;
-        found            = 1'b0;
 
-        if (rst_n) begin
-            for (offset = 0; offset < 4; offset = offset + 1) begin
+        case (rr_ptr)
 
-                index = rr_ptr + offset;
-
-                if (index >= 4)
-                    index = index - 4;
-
-                if (!found && req[index]) begin
-                    grant_next[index] = 1'b1;
+            2'd0: begin
+                if (req[0]) begin
+                    grant_next       = 4'b0001;
                     grant_valid_next = 1'b1;
-                    found = 1'b1;
-
-                    if (index == 3)
-                        rr_ptr_next = 2'd0;
-                    else
-                        rr_ptr_next = index + 1;
+                    rr_ptr_next      = 2'd1;
+                end
+                else if (req[1]) begin
+                    grant_next       = 4'b0010;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd2;
+                end
+                else if (req[2]) begin
+                    grant_next       = 4'b0100;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd3;
+                end
+                else if (req[3]) begin
+                    grant_next       = 4'b1000;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd0;
                 end
             end
-        end
+
+            2'd1: begin
+                if (req[1]) begin
+                    grant_next       = 4'b0010;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd2;
+                end
+                else if (req[2]) begin
+                    grant_next       = 4'b0100;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd3;
+                end
+                else if (req[3]) begin
+                    grant_next       = 4'b1000;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd0;
+                end
+                else if (req[0]) begin
+                    grant_next       = 4'b0001;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd1;
+                end
+            end
+
+            2'd2: begin
+                if (req[2]) begin
+                    grant_next       = 4'b0100;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd3;
+                end
+                else if (req[3]) begin
+                    grant_next       = 4'b1000;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd0;
+                end
+                else if (req[0]) begin
+                    grant_next       = 4'b0001;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd1;
+                end
+                else if (req[1]) begin
+                    grant_next       = 4'b0010;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd2;
+                end
+            end
+
+            2'd3: begin
+                if (req[3]) begin
+                    grant_next       = 4'b1000;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd0;
+                end
+                else if (req[0]) begin
+                    grant_next       = 4'b0001;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd1;
+                end
+                else if (req[1]) begin
+                    grant_next       = 4'b0010;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd2;
+                end
+                else if (req[2]) begin
+                    grant_next       = 4'b0100;
+                    grant_valid_next = 1'b1;
+                    rr_ptr_next      = 2'd3;
+                end
+            end
+
+        endcase
     end
 
-    assign grant = grant_next;
+    assign grant       = grant_next;
     assign grant_valid = grant_valid_next;
 
     always @(posedge clk or negedge rst_n) begin
