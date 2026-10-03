@@ -30,14 +30,14 @@ Priority 3: 3 → 0 → 1 → 2
 ```
 After a successful grant, priority moves to the requester immediately following the granted requester. If no request is active, the priority remains unchanged.
 
-##Verification
+## Verification
 
 Simulation was performed using Icarus Verilog:
 
 iverilog -g2001 -o arbiter_sim rr_arbiter.v tb_rr_arbiter.v
 vvp arbiter_sim
 
-###Result:
+### Result:
 ```
 ========================================
      SILICON SPRINT VERIFICATION
@@ -51,11 +51,11 @@ The testbench covers reset, single and multiple requests, persistent requests, d
 
 ##Yosys Synthesis
 
-####RTL was analyzed using:
+#### RTL was analyzed using:
 ```
 yosys -p "read_verilog rr_arbiter.v; hierarchy -top rr_arbiter; proc; opt; check; stat"
 ```
-####Yosys reported:
+### Yosys reported:
 ```
 Found and reported 0 problems.
 
@@ -79,7 +79,7 @@ The complete raw Yosys output is available in:
 
 yosys_synthesis_output.txt
 
-##Project Structure
+### Project Structure
 
 ```
 Silicon_Sprint_Vector/
@@ -89,7 +89,7 @@ Silicon_Sprint_Vector/
 └── yosys_synthesis_output.txt
 ```
 
-###Tools
+### Tools
 
 Verilog-2001
 
@@ -102,7 +102,7 @@ Git / GitHub
 Ubuntu Linux
 
 
-###Status
+### Status
 
 RTL: Complete
 Simulation: 53 tests / 0 errors / PASS
