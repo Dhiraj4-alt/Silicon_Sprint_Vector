@@ -27,7 +27,7 @@ Priority 0: 0 → 1 → 2 → 3
 Priority 1: 1 → 2 → 3 → 0
 Priority 2: 2 → 3 → 0 → 1
 Priority 3: 3 → 0 → 1 → 2
-
+```
 After a successful grant, priority moves to the requester immediately following the granted requester. If no request is active, the priority remains unchanged.
 
 ##Verification
@@ -38,7 +38,7 @@ iverilog -g2001 -o arbiter_sim rr_arbiter.v tb_rr_arbiter.v
 vvp arbiter_sim
 
 ###Result:
-
+```
 ========================================
      SILICON SPRINT VERIFICATION
 ========================================
@@ -46,17 +46,17 @@ Tests  : 53
 Errors : 0
 RESULT : PASS
 ========================================
-
+```
 The testbench covers reset, single and multiple requests, persistent requests, dynamic patterns, withdrawal, wrap-around, fairness, and illegal grant conditions.
 
 ##Yosys Synthesis
 
 ####RTL was analyzed using:
-
+```
 yosys -p "read_verilog rr_arbiter.v; hierarchy -top rr_arbiter; proc; opt; check; stat"
-
+```
 ####Yosys reported:
-
+```
 Found and reported 0 problems.
 
 Synthesis Statistics
@@ -74,19 +74,21 @@ $adffe	1
 $mux	48
 $pmux	3
 
-
+```
 The complete raw Yosys output is available in:
 
 yosys_synthesis_output.txt
 
 ##Project Structure
-'''
+
+```
 Silicon_Sprint_Vector/
 ├── rr_arbiter.v
 ├── tb_rr_arbiter.v
 ├── README.md
 └── yosys_synthesis_output.txt
-'''
+```
+
 ###Tools
 
 Verilog-2001
