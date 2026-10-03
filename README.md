@@ -33,9 +33,10 @@ After a successful grant, priority moves to the requester immediately following 
 ## Verification
 
 Simulation was performed using Icarus Verilog:
-
+```
 iverilog -g2001 -o arbiter_sim rr_arbiter.v tb_rr_arbiter.v
 vvp arbiter_sim
+```
 
 ### Result:
 ```
@@ -49,13 +50,13 @@ RESULT : PASS
 ```
 The testbench covers reset, single and multiple requests, persistent requests, dynamic patterns, withdrawal, wrap-around, fairness, and illegal grant conditions.
 
-##Yosys Synthesis
+### Yosys Synthesis
 
 #### RTL was analyzed using:
 ```
 yosys -p "read_verilog rr_arbiter.v; hierarchy -top rr_arbiter; proc; opt; check; stat"
 ```
-### Yosys reported:
+#### Yosys reported:
 ```
 Found and reported 0 problems.
 
